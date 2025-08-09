@@ -76,4 +76,36 @@ class App(badge.BaseApp):
 
 
     def loop(self) -> None:
-        pass
+        # 440.0	466.2	493.9   523.3	554.4	587.3	622.3	659.3	698.5	740.0	784.0	830.6	880.0	932.3	987.8
+        if badge.input.get_button(badge.input.Buttons.SW4):
+            badge.buzzer.tone(440, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW5):
+            badge.buzzer.tone(466, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW6):
+            badge.buzzer.tone(494, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW7):
+            badge.buzzer.tone(523, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW8):
+            badge.buzzer.tone(554, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW9):
+            badge.buzzer.tone(587, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW10):
+            badge.buzzer.tone(622, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW11):
+            badge.buzzer.tone(659, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW12):
+            badge.buzzer.tone(699, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW13):
+            badge.buzzer.tone(740, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW14):
+            badge.buzzer.tone(784, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW15):
+            badge.buzzer.tone(831, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW16):
+            badge.buzzer.tone(880, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW17):
+            badge.buzzer.tone(932, 1)
+        elif badge.input.get_button(badge.input.Buttons.SW18):
+            badge.buzzer.tone(988, 1)
+        else:
+            pass
