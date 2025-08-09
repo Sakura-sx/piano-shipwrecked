@@ -6,24 +6,9 @@ import badge
 class App(badge.BaseApp):
     def on_open(self) -> None:
         badge.buzzer.tone(440, 1)
-    
-    def render_display(self, contact) -> None:
-        badge.display.fill(1)  # Clear the display
-        
-        # text rendering: decide on a font size and line breaks for the name
-        # if the name has no spaces, go as low as font size 32 before inserting hyphens where needed
-        # if the name has spaces, break at the middlemost space first, then the rest of the spaces, then insert hyphens as needed
-        max_handle_chars = 200 // badge.display.nice_fonts[24].max_width
-        handle_wrapped = [f"@{contact.handle}"[i:i + max_handle_chars] for i in range(0, len(contact.handle) + 1, max_handle_chars)]
-        self.logger.debug(f"Wrapped handle: {handle_wrapped}")
-        name_space_avail = 200 - 24 - (len(handle_wrapped) * 24)
-        font, name = self.decide_name_size(contact.name, name_space_avail)
-        self.logger.debug(f"In space {name_space_avail}, using size {font.height} with {name}")
-        name_height = font.height * (name.count('\n') + 1)
-        badge.display.nice_text(name, 0, 0, font=font, color=0, rot=0, x_spacing=0, y_spacing=0)
-        badge.display.nice_text(f"{contact.pronouns}", 0, name_height, font=24, color=0, rot=0, x_spacing=0, y_spacing=0)
-        badge.display.nice_text(f"0x{contact.badge_id:0>4x}", 200-badge.display.nice_fonts[24].max_width*6, name_height, font=24, color=0, rot=0, x_spacing=0, y_spacing=0)
-        badge.display.nice_text('\n'.join(handle_wrapped), 0, name_height + 24, font=24, color=0, rot=0, x_spacing=0, y_spacing=0)
+        badge.display.fill(1)
+        fb = badge.display.import_pbm("/apps/Piano/piano.pbm")
+        badge.display.blit(fb, 0, 0)
         badge.display.show()
     
     def decide_name_size(self, name: str, y_space_available=130):
