@@ -5,14 +5,7 @@ import badge
 
 class App(badge.BaseApp):
     def on_open(self) -> None:
-        me = badge.contacts.my_contact()
-        if not me:
-            badge.display.fill(1)
-            badge.display.nice_text("No contact\ninfo. Please\nadd yourself\nto contacts\nwith the\nwebflasher.", 0, 0, font=32)
-            badge.display.show()
-            return
-        self.logger.info(f"Rendering contact info for {me}")
-        self.render_display(me)
+        badge.buzzer.tone(440, 1)
     
     def render_display(self, contact) -> None:
         badge.display.fill(1)  # Clear the display
